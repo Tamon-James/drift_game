@@ -73,14 +73,21 @@ function newQuestion() {
 
     const choiceDiv = document.getElementById("choices");
     choiceDiv.innerHTML = "";
+
+    let answered = false;
+
     choices.forEach(choice => {
         const btn = document.createElement("button");
         btn.textContent = choice.name;
-        btn.onclick = ()=> checkAnswer(choice);
+        btn.onclick = () => {
+            if(!answered) {
+                answered = true;
+                checkAnswer(choice);
+            }
+        };
         choiceDiv.appendChild(btn);
     });
-
-    audio = new Audio(currentAnswer.sound);
+        audio = new Audio(currentAnswer.sound);
 }
 
 function checkAnswer(choice) {
