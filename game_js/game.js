@@ -3,7 +3,14 @@ const engines = [
     { sound: "sounds/SR20DET.mp3", name: "SR20DET"},
     { sound: "sounds/M16A.mp3", name: "M16A"},
     { sound: "sounds/EJ20.mp3", name: "EJ20"},
-    { sound: "sounds/13B-REW.mp3", name: "13B-REW(ロータリー)"}
+    { sound: "sounds/13B-REW.mp3", name: "13B-REW(ロータリー)"},
+    { sound: "sounds/3S-GE.mp3", name: "3S-GE"},
+    { sound: "sounds/4G63.mp3", name: "4G63"},
+    { sound: "sounds/BP-ZE.mp3", name: "BP-ZE"},
+    { sound: "sounds/CA18DE.mp3", name: "CA18DE"},
+    { sound: "sounds/F22C.mp3", name: "F22C"},
+    { sound: "sounds/Rb20de.mp3", name: "RB20DE"},
+    { sound: "sounds/VQ35DE.mp3", name: "VQ35DE"}
 ];
 
 let currentAnswer = null;
