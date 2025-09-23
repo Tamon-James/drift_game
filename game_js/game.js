@@ -61,10 +61,9 @@ function newQuestion() {
     const answerIndex = Math.floor(Math.random() * engines.length);
     currentAnswer = engines[answerIndex];
 
-    const choices = shuffle([...engines]).slice(0, 5);
-    if(!choices.includes(currentAnswer)) {
-        choices[0] = currentAnswer;
-    }
+    let choices = shuffle([...engines]).slice(0, 4);
+        choices.push(currentAnswer);
+    choices = shuffle(choices);
 
     const questionTitle = document.querySelector("#gameScreen h2");
     if (questionTitle) {
@@ -138,5 +137,10 @@ function endGame() {
 }
 
 function shuffle(array){
-    return array.sort(() => Math.random() - 0.5);
+    const arr = [...array];
+    for(let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
 }
