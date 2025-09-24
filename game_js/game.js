@@ -1,16 +1,16 @@
 const engines = [
-    { sound: "sounds/1JZ-GTE.mp3", name: "1JZ-GTE"},
-    { sound: "sounds/SR20DET.mp3", name: "SR20DET"},
-    { sound: "sounds/M16A.mp3", name: "M16A"},
-    { sound: "sounds/EJ20.mp3", name: "EJ20"},
-    { sound: "sounds/13B-REW.mp3", name: "13B-REW(ロータリー)"},
-    { sound: "sounds/3S-GE.mp3", name: "3S-GE"},
-    { sound: "sounds/4G63.mp3", name: "4G63"},
-    { sound: "sounds/BP-ZE.mp3", name: "BP-ZE"},
-    { sound: "sounds/CA18DE.mp3", name: "CA18DE"},
-    { sound: "sounds/F22C.mp3", name: "F22C"},
-    { sound: "sounds/Rb20de.mp3", name: "RB20DE"},
-    { sound: "sounds/VQ35DE.mp3", name: "VQ35DE"}
+    { name: "1JZ-GTE", sound: ["sounds/1JZ-GTE.mp3"]},
+    { name: "SR20DET", sound: ["sounds/SR20DET.mp3"]},
+    { name: "M16A", sound: ["sounds/M16A.mp3"]},
+    { name: "EJ20", sound: ["sounds/EJ20.mp3"]},
+    { name: "13B-REW(ロータリー)", sound: ["sounds/13B-REW.mp3"]},
+    { name: "3S-GE", sound: ["sounds/3S-GE.mp3"]},
+    { name: "4G63", sound: ["sounds/4G63.mp3"]},
+    { name: "BP-ZE", sound: ["sounds/BP-ZE.mp3"]},
+    { name: "CA18DE", sound: ["sounds/CA18DE.mp3"]},
+    { name: "F22C", sound: ["sounds/F22C.mp3"]},
+    { name: "RB20DE", sound: ["sounds/Rb20De.mp3"]},
+    { name: "VQ35DE", sound: ["sounds/VQ35DE.mp3"]}
 ];
 
 let currentAnswer = null;
@@ -59,10 +59,17 @@ function newQuestion() {
     }
 
     const answerIndex = Math.floor(Math.random() * engines.length);
-    currentAnswer = engines[answerIndex];
+    const engine = engines[answerIndex];
 
-    let choices = shuffle([...engines]).slice(0, 4);
-        choices.push(currentAnswer);
+    const soundIndex = Math.floor(Math.random() * engine.sound.length);
+
+    currentAnswer = {name: engine.name, sound: engine.sound[soundIndex]};
+
+    let choices = shuffle([...engines]).slice(0, 5);
+    if(!choices.some(c => c.name === currentAnswer.name)) {
+        choices.pop();
+        choices.push(engine);
+    }
     choices = shuffle(choices);
 
     const questionTitle = document.querySelector("#gameScreen h2");
@@ -91,7 +98,7 @@ function newQuestion() {
 
 function checkAnswer(choice) {
     const result = document.getElementById("result");
-    if(choice === currentAnswer) {
+    if(choice.name === currentAnswer.name) {
         result.textContent = "✅ 正解！";
         correctSound.currentTime = 0;
         correctSound.play();
