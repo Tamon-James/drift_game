@@ -53,10 +53,7 @@ function newQuestion() {
         return;
     }
 
-    if(audio) {
-        audio.pause();
-        audio.currentTime = 0;
-    }
+
 
     const answerIndex = Math.floor(Math.random() * engines.length);
     const engine = engines[answerIndex];
@@ -99,11 +96,13 @@ function newQuestion() {
 function checkAnswer(choice) {
     const result = document.getElementById("result");
     if(choice.name === currentAnswer.name) {
+        audio.pause();
         result.textContent = "✅ 正解！";
         correctSound.currentTime = 0;
         correctSound.play();
         correctCount++;
     } else {
+        audio.pause();
         result.textContent = `❌ 不正解。正解は ${currentAnswer.name}`;
         incorrectSound.currentTime = 0;
         incorrectSound.play();
