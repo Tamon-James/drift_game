@@ -1,5 +1,5 @@
 const engines = [
-    { name: "1JZ-GTE", sound: ["sounds/1JZ-GTE.mp3"]},
+    { name: "1JZ-GTE", sound: ["sounds/1JZ-GTE.mp3", "sounds/1JZ-GTE2.mp3", "sounds/1JZ-GTE3.mp3", "sounds/1JZ-GTE4.mp3"]},
     { name: "SR20DET", sound: ["sounds/SR20DET.mp3"]},
     { name: "M16A", sound: ["sounds/M16A.mp3"]},
     { name: "EJ20", sound: ["sounds/EJ20.mp3"]},
@@ -10,7 +10,12 @@ const engines = [
     { name: "CA18DE", sound: ["sounds/CA18DE.mp3"]},
     { name: "F22C", sound: ["sounds/F22C.mp3"]},
     { name: "RB20DE", sound: ["sounds/Rb20De.mp3"]},
-    { name: "VQ35DE", sound: ["sounds/VQ35DE.mp3"]}
+    { name: "VQ35DE", sound: ["sounds/VQ35DE.mp3"]},
+    { name: "1G-GZE", sound: ["sounds/1G-GZE.mp3"]},
+    { name: "7M-GE", sound: ["sounds/7M-GE.mp3"]},
+    { name: "7M-GTEU", sound: ["sounds/7M-GTEU.mp3"]},
+    { name: "EZ-30", sound: ["sounds/EZ-30.mp3"]},
+    { name: "FA20", sound: ["sounds/FA20.mp3"]}
 ];
 
 let currentAnswer = null;
